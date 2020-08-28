@@ -1,19 +1,24 @@
 
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import {Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../reducers/PeopleReducer';
+import PeopleList from './PeopleList';
 
 const store = createStore(reducers);
 
-export default function App() {
+
+export default class App extends Component {
+  render(){
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-  
-    </View>
+    <Provider store={store}>
+        <View style={styles.container}>
+          <PeopleList />
+        </View>
+      </Provider>
   );
+}
 }
 
 const styles = StyleSheet.create({
